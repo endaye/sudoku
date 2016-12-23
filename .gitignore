@@ -81,3 +81,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# JetBrain IDE files
+.idea/*
+
+# CMake build files
+cmake-build-debug/*
+CMakeLists.txt
