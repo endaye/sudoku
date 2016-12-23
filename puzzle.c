@@ -21,7 +21,7 @@ int ** createPuzzle()
 	for (i = 0; i < 9; ++i)
 	{
 		puzzle[i] = (int*)malloc(sizeof(int)*9);
-		for (j = 0; j < 9; ++i)
+		for (j = 0; j < 9; ++j)
 		{
 			puzzle[i][j] = array[i][j];
 		}

@@ -2,4 +2,4 @@
 #include <stdlib.h>
 
 int ** createPuzzle();
-void printPuzzle();
+void printPuzzle(int **);
