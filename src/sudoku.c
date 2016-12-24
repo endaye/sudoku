@@ -1,4 +1,8 @@
-#include "sudoku.h"
+#include "../include/sudoku.h"
+
+char POSSIBLE = (char)0x1FF;
+int SIZE_ROWS = 9;
+int SIZE_COLUMNS = 9;
 
 //main function
 int main() 

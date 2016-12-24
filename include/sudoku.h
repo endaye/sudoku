@@ -1,7 +1,12 @@
+#ifndef SUDOKU_H
+#define SUDOKU_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
-char POSSIBLE = 0x1FF;
+extern char POSSIBLE;
+extern int SIZE_ROWS;
+extern int SIZE_COLUMNS;
 
 /* 9*9 box */
 typedef struct Box
@@ -15,7 +20,7 @@ typedef struct Square
 {
     unsigned int number;
 
-    /* A 9-bit binary code to present the possible number could be fit in the square:
+    /* A 9-bit vector to present the possible number could be fit in the square:
      * 000000000
      * 987654321
      * 0: could be the relative number
@@ -30,3 +35,5 @@ typedef struct Square
 int ** createPuzzle();
 void printPuzzle(int **);
 Square *** setUpPuzzle(int ** puzzle);
+
+#endif

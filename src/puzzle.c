@@ -1,4 +1,4 @@
-#include "sudoku.h"
+#include "../include/sudoku.h"
 
 Square *** setUpPuzzle(int ** puzzle)
 {
@@ -8,21 +8,28 @@ Square *** setUpPuzzle(int ** puzzle)
     sudoku = (Square***)malloc(sizeof(Square**) * 9);
 
     /* loop through rows*/
-    for (i = 0; i < 9; ++i) {
+    for (i = 0; i < SIZE_ROWS; ++i) {
+        /* malloc space for each row */
         sudoku[i] = (Square**)malloc(sizeof(Square*) * 9);
 
         /* loop through columns */
-        for (j = 0; j < 9; ++j) {
+        for (j = 0; j < SIZE_COLUMNS; ++j) {
+            /* malloc space for each square */
             sudoku[i][j] = (Square*)malloc(sizeof(Square) * 9);
 
+            /* assign number to sudoku adapter*/
             sudoku[i][j]->number = puzzle[i][j];
+
+            /* assign row and column numbers to each square */
             sudoku[i][j]->row = i;
             sudoku[i][j]->column = j;
 
+            /* if number is not zero, the square is not empty*/
             if (sudoku[i][j]->number != 0)
             {
                 sudoku[i][j]->code = POSSIBLE;
             }
+            /* else the square is empty */
             else
             {
                 sudoku[i][j]->code = 0x0;
@@ -48,9 +55,9 @@ int **createPuzzle() {
                        0, 0, 0, 1, 0, 0, 8, 6, 0};
 
     puzzle = (int **) malloc(sizeof(int*) * 9);
-    for (i = 0; i < 9; ++i) {
+    for (i = 0; i < SIZE_ROWS; ++i) {
         puzzle[i] = (int *) malloc(sizeof(int) * 9);
-        for (j = 0; j < 9; ++j) {
+        for (j = 0; j < SIZE_COLUMNS; ++j) {
             puzzle[i][j] = array[i][j];
         }
     }
@@ -61,10 +68,10 @@ void printPuzzle(int **puzzle) {
     int i, j;
 
     printf("-------------------------\n");
-    for (i = 0; i < 9; ++i) {
+    for (i = 0; i < SIZE_ROWS; ++i) {
         /* print each row */
         printf("| ");
-        for (j = 0; j < 9; ++j) {
+        for (j = 0; j < SIZE_COLUMNS; ++j) {
             printf("%d ", puzzle[i][j]);
             if ((j + 1) % 3 == 0) {
                 printf("| ");
