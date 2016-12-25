@@ -1,8 +1,9 @@
 #include "../include/sudoku.h"
 
-char POSSIBLE = (char)0x1FF;
+unsigned short IMPOSSIBLE = 0x1FF;
 int SIZE_ROWS = 9;
 int SIZE_COLUMNS = 9;
+int UNSOLVED = 81;
 
 //main function
 int main() 
@@ -10,8 +11,14 @@ int main()
 	int ** puzzle;
 	Square *** sudoku;
 	puzzle = createPuzzle();
-	printPuzzle(puzzle);
 	sudoku = setUpPuzzle(puzzle);
+
+    printPuzzle(sudoku);
+
+    checkPuzzle(sudoku);
+
+    printf("\n");
+    printPuzzle(sudoku);
 	return 0;
 }
 

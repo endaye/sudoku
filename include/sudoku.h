@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern char POSSIBLE;
+extern unsigned short IMPOSSIBLE;
 extern int SIZE_ROWS;
 extern int SIZE_COLUMNS;
+extern int UNSOLVED;
 
 /* 9*9 box */
 typedef struct Box
@@ -25,15 +26,22 @@ typedef struct Square
      * 987654321
      * 0: could be the relative number
      * 1: cannot be that number */
-    char code;
-
+    unsigned short code;
     Box * box;
     int row;
     int column;
 } Square;
 
+/* sudoku.c */
 int ** createPuzzle();
-void printPuzzle(int **);
+void printPuzzle(Square ***);
 Square *** setUpPuzzle(int ** puzzle);
+void checkPuzzle(Square *** sudoku);
+
+int updateSudoku(Square *** sudoku, int row, int column);
+
+/* square.c */
+int checkCode(Square * square);
+int solveSquare(Square * square);
 
 #endif
